@@ -2,6 +2,15 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.0.1](https://github.com/SocialGouv/emjpm/compare/v1.0.0...v1.0.1) (2019-07-17)
+
+
+### Bug Fixes
+
+* replace - by _ ([1bd001b](https://github.com/SocialGouv/emjpm/commit/1bd001b))
+
+
+
 ## [1.0.0](https://github.com/SocialGouv/emjpm/compare/v0.0.0...v1.0.0) (2019-07-17)
 
 
