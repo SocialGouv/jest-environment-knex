@@ -35,5 +35,5 @@ test("should list all tables", async () => {
 
 [npm-url]: https://npmjs.org/package/jest-environment-knex
 [npm-image]: http://img.shields.io/npm/v/jest-environment-knex.svg
-[travis-url]: http://travis-ci.org/SocialGouv/jest-environment-knex
-[travis-image]: http://travis-ci.org/SocialGouv/jest-environment-knex.svg?branch=master
+[travis-url]: http://travis-ci.com/SocialGouv/jest-environment-knex
+[travis-image]: http://travis-ci.com/SocialGouv/jest-environment-knex.svg?branch=master
