@@ -1,0 +1,17 @@
+---
+dist: xenial
+language: node_js
+node_js: "10"
+git:
+  depth: 5
+
+cache:
+  yarn: true
+
+install:
+  - yarn --frozen-lockfile
+
+script:
+  - yarn lint
+  - yarn build
+  - yarn test --coverage

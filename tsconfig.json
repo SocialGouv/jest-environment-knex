@@ -13,9 +13,6 @@
     "noUnusedParameters": true,
     "outDir": "dist",
     "resolveJsonModule": true,
-    "typeRoots": [],
-    "types": [],
-    "rootDir": "src",
     "strict": true
   }
 }

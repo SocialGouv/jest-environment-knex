@@ -5,6 +5,8 @@ import Debug from "debug";
 import NodeEnvironment from "jest-environment-node";
 import Knex from "knex";
 import parseConnection from "knex/lib/util/parse-connection";
+import { tmpdir } from "os";
+import { join } from "path";
 import { uid } from "rand-token";
 import { runInContext, Script } from "vm";
 
@@ -38,7 +40,9 @@ class KnexEnvironment extends NodeEnvironment {
       // tslint:disable-next-line: prefer-object-spread
       Object.assign(this.context, config.testEnvironmentOptions)
     ));
-    global.databaseName = `emjpm_test_${uid(16).toLowerCase()}`;
+    const prefix =
+      config.testEnvironmentOptions.prefix || "jest-environment-knex";
+    global.databaseName = `${prefix}_${uid(16).toLowerCase()}`;
 
     //
 
@@ -54,39 +58,39 @@ class KnexEnvironment extends NodeEnvironment {
 
     debug("new Knex");
     const knex = Knex(this.options);
-    debug(`await knex.raw(CREATE DATABASE ${this.global.databaseName});`);
-    await knex.raw(`CREATE DATABASE ${this.global.databaseName};`);
-    debug("knex.destroy()");
-    this.lazyDestroy(knex);
 
-    //
+    switch (knex.client.config.client) {
+      case "sqlite3":
+        await this.createRandomDataFile();
+        break;
 
-    const connection: {} =
-      typeof this.options.connection === "string"
-        ? parseConnection(this.options.connection)
-        : this.options.connection;
+      default:
+        await this.createRandomDatabase(knex);
+        break;
+    }
 
-    this.global.knex = Knex({
-      ...this.options,
-      connection: {
-        ...connection,
-        database: this.global.databaseName
-      }
-    });
     debug("setup");
   }
+
   public async teardown() {
     debug("teardown");
     this.lazyDestroy(this.global.knex);
 
     //
 
-    debug("new Knex");
-    const knex = Knex(this.options);
-    debug(`await knex.raw(DROP DATABASE ${this.global.databaseName});`);
-    await knex.raw(`DROP DATABASE ${this.global.databaseName};`);
-    debug("knex.destroy()");
-    this.lazyDestroy(knex);
+    switch (this.global.knex.client.config.client) {
+      case "sqlite3":
+        break;
+
+      default:
+        debug("new Knex");
+        const knex = Knex(this.options);
+        debug(`await knex.raw(DROP DATABASE ${this.global.databaseName});`);
+        await knex.raw(`DROP DATABASE ${this.global.databaseName};`);
+        debug("knex.destroy()");
+        this.lazyDestroy(knex);
+        break;
+    }
 
     //
 
@@ -103,11 +107,48 @@ class KnexEnvironment extends NodeEnvironment {
     return super.runScript(script);
   }
 
+  private async createRandomDataFile() {
+    const filename = join(tmpdir(), this.global.databaseName + ".sqlite3");
+    debug({ filename });
+    const connection: {} =
+      typeof this.options.connection === "string"
+        ? parseConnection(this.options.connection)
+        : this.options.connection;
+    this.global.knex = Knex({
+      ...this.options,
+      connection: {
+        ...connection,
+        filename
+      }
+    });
+  }
+
+  private async createRandomDatabase(knex: Knex<any, unknown[]>) {
+    debug(`await knex.raw(CREATE DATABASE ${this.global.databaseName});`);
+    await knex.raw(`CREATE DATABASE ${this.global.databaseName};`);
+    debug("knex.destroy()");
+    this.lazyDestroy(knex);
+
+    //
+
+    const connection: {} =
+      typeof this.options.connection === "string"
+        ? parseConnection(this.options.connection)
+        : this.options.connection;
+    this.global.knex = Knex({
+      ...this.options,
+      connection: {
+        ...connection,
+        database: this.global.databaseName
+      }
+    });
+  }
+
   private lazyDestroy(knex: Knex) {
     this.destroyPromises.push(
       ((knex.destroy() as any) as Promise<void>).then(
         debug.bind(null, "knex.destroyed"),
-        /* tslint:disable:no-console */
+        // tslint:disable-next-line: no-console
         console.error
       )
     );
