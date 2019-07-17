@@ -1,7 +1,6 @@
 {
   "name": "jest-environment-knex",
   "version": "0.0.0",
-  "private": true,
   "main": "./dist/src/jest-environment-knex.js",
   "types": "./dist/src/jest-environment-knex.d.ts",
   "scripts": {
