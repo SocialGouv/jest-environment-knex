@@ -33,13 +33,22 @@ jobs:
     - stage: Build
       <<: *node_stage
       if: NOT env(RELEASE)
+      env: *npm_keys
       script:
         - yarn build
         - yarn lint
         - yarn test
+      deploy:
+        provider: npm
+        #
+        api_key: "$NPM_TOKEN"
+        email: "$NPM_EMAIL"
+        skip_cleanup: true
+        on:
+          tags: true
 
     - stage: Release
-      <<: *node_stage
+      <<: *github_keys
       if: env(RELEASE)
       name: Make a new release 🎉
       git:
@@ -47,9 +56,7 @@ jobs:
         # Try to have all the commits for the release Change Log
         # see travis-ci/travis-ci#3412
         depth: 9999999 # Over 9000 !
-      env:
-        - *github_keys
-        - *npm_keys
+      env: *npm_keys
       install: skip
       before_script:
         - git checkout ${TRAVIS_BRANCH}
@@ -59,10 +66,4 @@ jobs:
       script:
         - npx standard-version ${STANDARD_VERSION_ARGS}
         - CONVENTIONAL_GITHUB_RELEASER_TOKEN=${GITHUB_TOKEN} npx conventional-github-releaser -p angular
-      deploy:
-        provider: npm
-        email: "$NPM_EMAIL"
-        api_key: "$NPM_TOKEN"
-        skip_cleanup: true
-        on:
-          branch: master
+
