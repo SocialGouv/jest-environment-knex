@@ -12,7 +12,7 @@ beforeAll(async () => {
 });
 
 test("should expose an 'databaseName' on global", () => {
-  expect(databaseName).toMatch(/jest-environment-knex_\w{16}/);
+  expect(databaseName).toMatch(/jest_environment_knex_\w{16}/);
 });
 
 test("should read the lorem db", async () => {
