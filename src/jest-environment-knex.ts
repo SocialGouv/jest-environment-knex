@@ -41,7 +41,7 @@ class KnexEnvironment extends NodeEnvironment {
       Object.assign(this.context, config.testEnvironmentOptions)
     ));
     const prefix =
-      config.testEnvironmentOptions.prefix || "jest-environment-knex";
+      config.testEnvironmentOptions.prefix || "jest_environment_knex";
     global.databaseName = `${prefix}_${uid(16).toLowerCase()}`;
 
     //
