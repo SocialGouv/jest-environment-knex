@@ -2,6 +2,15 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.0.2](https://github.com/SocialGouv/jest-environment-knex/compare/v1.0.1...v1.0.2) (2019-07-17)
+
+
+### Tests
+
+*  replace - by _ ([2fa46ee](https://github.com/SocialGouv/jest-environment-knex/commit/2fa46ee))
+
+
+
 ### [1.0.1](https://github.com/SocialGouv/emjpm/compare/v1.0.0...v1.0.1) (2019-07-17)
 
 
