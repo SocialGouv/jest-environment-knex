@@ -48,7 +48,7 @@ jobs:
           tags: true
 
     - stage: Release
-      <<: *github_keys
+      <<: *node_stage
       if: env(RELEASE)
       name: Make a new release 🎉
       git:
@@ -56,7 +56,7 @@ jobs:
         # Try to have all the commits for the release Change Log
         # see travis-ci/travis-ci#3412
         depth: 9999999 # Over 9000 !
-      env: *npm_keys
+      env: *github_keys
       install: skip
       before_script:
         - git checkout ${TRAVIS_BRANCH}
