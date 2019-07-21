@@ -131,7 +131,7 @@ class KnexEnvironment extends NodeEnvironment {
 
     //
 
-    const connection: {} =
+    const {connection}: {} =
       typeof this.options.connection === "string"
         ? parseConnection(this.options.connection)
         : this.options.connection;

@@ -33,11 +33,14 @@ jobs:
     - stage: Build
       <<: *node_stage
       if: NOT env(RELEASE)
+      addons:
+        postgresql: "11"
       env: *npm_keys
       script:
         - yarn build
         - yarn lint
-        - yarn test
+        - yarn test:postgres
+        - yarn test:sqlite3
       deploy:
         provider: npm
         #

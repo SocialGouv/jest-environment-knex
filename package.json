@@ -9,7 +9,9 @@
   "scripts": {
     "build": "tsc",
     "lint": "tslint -p tsconfig.json -t stylish",
-    "test": "jest"
+    "test:sqlite3": "jest --config ./__tests__/sqlite3/jest.config.js",
+    "test:postgres": "jest --config ./__tests__/postgres/jest.config.js",
+    "watch": "yarn build --watch"
   },
   "dependencies": {
     "jest-environment-node": "^24.8.0",
@@ -23,6 +25,7 @@
     "@types/jest": "^24.0.15",
     "@types/node": "^12.6.8",
     "jest": "^24.8.0",
+    "pg": "^7.11.0",
     "prettier": "^1.17.0",
     "sqlite3": "^4.0.9",
     "ts-jest": "^24.0.2",

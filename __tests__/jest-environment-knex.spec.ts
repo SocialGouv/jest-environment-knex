@@ -1,14 +1,10 @@
 //
 
 import "knex";
-import { join } from "path";
 const { databaseName, knex } = global;
 
 beforeAll(async () => {
-  await knex.migrate.latest({
-    directory: join(__dirname, "../../dist/migrations"),
-    loadExtensions: ["js"]
-  });
+  await knex.migrate.latest();
 });
 
 test("should expose an 'databaseName' on global", () => {
@@ -16,5 +12,7 @@ test("should expose an 'databaseName' on global", () => {
 });
 
 test("should read the lorem db", async () => {
-  expect(await knex.select().from("knex_migrations_lock")).toMatchSnapshot();
+  expect(await knex.select().from("lorem")).toMatchSnapshot(
+    knex.client.config.client
+  );
 });
