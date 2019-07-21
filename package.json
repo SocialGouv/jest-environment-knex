@@ -30,7 +30,7 @@
     "sqlite3": "^4.0.9",
     "ts-jest": "^24.0.2",
     "ts-node": "^8.3.0",
-    "tslint": "^5.16.0",
+    "tslint": "^5.18.0",
     "typescript": "^3.5.3"
   },
   "repository": {
