@@ -131,10 +131,10 @@ class KnexEnvironment extends NodeEnvironment {
   private async createRandomDataFile() {
     const filename = join(tmpdir(), this.global.databaseName + ".sqlite3");
     debug({ filename });
-    const connection: {} =
+    const { connection } =
       typeof this.options.connection === "string"
         ? parseConnection(this.options.connection)
-        : this.options.connection;
+        : { connection: this.options.connection };
     this.global.knex = Knex({
       ...this.options,
       connection: {
@@ -153,7 +153,7 @@ class KnexEnvironment extends NodeEnvironment {
     const { connection } =
       typeof this.options.connection === "string"
         ? parseConnection(this.options.connection)
-        : this.options.connection;
+        : { connection: this.options.connection };
     this.global.knex = Knex({
       ...this.options,
       connection: {
