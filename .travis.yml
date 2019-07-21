@@ -35,6 +35,8 @@ jobs:
       if: NOT env(RELEASE)
       addons:
         postgresql: "11"
+      services:
+        - postgresql
       env: *npm_keys
       script:
         - yarn build

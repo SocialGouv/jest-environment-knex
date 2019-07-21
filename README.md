@@ -5,6 +5,8 @@
 
 > [knex](knexjs.org) environment in [Jest](https://github.com/facebook/jest)
 
+Tested against SQlite3 and Postgres. [See `__tests__`](./__tests__)
+
 ## Install
 
 ```sh
