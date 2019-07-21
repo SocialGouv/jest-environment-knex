@@ -59,6 +59,19 @@ class KnexEnvironment extends NodeEnvironment {
     debug("new Knex");
     const knex = Knex(this.options);
 
+    // Heartbeat Check
+    try {
+      debug("Heartbeat check");
+      await knex.raw("SELECT 1");
+    } catch (error) {
+      debug("Heartbeat check failure");
+      if (error instanceof Error) {
+        error.message =
+          "[jest-environment-knex] Heartbeat check failure\n" + error.message;
+      }
+      throw error;
+    }
+
     switch (knex.client.config.client) {
       case "sqlite3":
         await this.createRandomDataFile();
@@ -69,11 +82,18 @@ class KnexEnvironment extends NodeEnvironment {
         break;
     }
 
-    debug("setup");
+    this.lazyDestroy(knex);
+    debug("/setup");
   }
 
   public async teardown() {
     debug("teardown");
+
+    if (!this.global.knex) {
+      debug("no global knex instance");
+      return;
+    }
+
     this.lazyDestroy(this.global.knex);
 
     //
@@ -94,13 +114,14 @@ class KnexEnvironment extends NodeEnvironment {
 
     //
 
+    debug("wait for all kenx instance to be destroyed");
     await Promise.all(this.destroyPromises);
 
     //
 
     debug("super.teardown()");
     await super.teardown();
-    debug("teardown");
+    debug("/teardown");
   }
 
   public runScript(script: Script) {
@@ -126,8 +147,6 @@ class KnexEnvironment extends NodeEnvironment {
   private async createRandomDatabase(knex: Knex<any, unknown[]>) {
     debug(`await knex.raw(CREATE DATABASE ${this.global.databaseName});`);
     await knex.raw(`CREATE DATABASE ${this.global.databaseName};`);
-    debug("knex.destroy()");
-    this.lazyDestroy(knex);
 
     //
 
@@ -144,7 +163,10 @@ class KnexEnvironment extends NodeEnvironment {
     });
   }
 
-  private lazyDestroy(knex: Knex) {
+  private lazyDestroy(knex?: Knex) {
+    if (!knex) {
+      return;
+    }
     this.destroyPromises.push(
       ((knex.destroy() as any) as Promise<void>).then(
         debug.bind(null, "knex.destroyed"),
