@@ -34,7 +34,7 @@ jobs:
       <<: *node_stage
       if: NOT env(RELEASE)
       addons:
-        postgresql: "11"
+        postgresql: "10"
       services:
         - postgresql
       env: *npm_keys
