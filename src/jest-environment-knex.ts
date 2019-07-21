@@ -62,7 +62,7 @@ class KnexEnvironment extends NodeEnvironment {
     // Heartbeat Check
     try {
       debug("Heartbeat check");
-      await knex.raw("SELECT 1");
+      await knex.raw("SELECT 1 as value");
     } catch (error) {
       debug("Heartbeat check failure");
       if (error instanceof Error) {
