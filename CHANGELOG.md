@@ -2,6 +2,15 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.1.1](https://github.com/SocialGouv/jest-environment-knex/compare/v1.1.0...v1.1.1) (2019-07-21)
+
+
+### Bug Fixes
+
+* undefined connection ([936bc62](https://github.com/SocialGouv/jest-environment-knex/commit/936bc62))
+
+
+
 ## [1.1.0](https://github.com/SocialGouv/jest-environment-knex/compare/v1.0.3...v1.1.0) (2019-07-21)
 
 
