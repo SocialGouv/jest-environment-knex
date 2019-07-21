@@ -7,8 +7,7 @@ require("ts-node/register");
 module.exports = {
   client: "pg",
   connection:
-    process.env.POSTGRES_URL ||
-    "postgresql://postgres:@localhost:5432/postgres",
+    process.env.POSTGRES_URL || "postgres://postgres@localhost/postgres",
   useNullAsDefault: true,
 
   migrations: {
