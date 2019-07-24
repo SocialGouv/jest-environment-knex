@@ -285,10 +285,10 @@
     "@types/istanbul-reports" "^1.1.1"
     "@types/yargs" "^12.0.9"
 
-"@socialgouv/tslint-config-recommended@^0.9.2":
-  version "0.9.2"
-  resolved "https://registry.yarnpkg.com/@socialgouv/tslint-config-recommended/-/tslint-config-recommended-0.9.2.tgz#9045ea277eef53fc29bf1ac4decc655ff3cba62c"
-  integrity sha512-Ipupm2MHBhHHW3q7HoM+sNEFQbH0dZzFCZla2X0sJ/X/SW6FvsSQsa7ISGll8xe7f7Bos1TQ3HN8KySlY5vEtg==
+"@socialgouv/tslint-config-recommended@^0.9.3":
+  version "0.9.3"
+  resolved "https://registry.yarnpkg.com/@socialgouv/tslint-config-recommended/-/tslint-config-recommended-0.9.3.tgz#dcb5d3cfb312c9b4afe7d37ef241fabc85fac809"
+  integrity sha512-/egD6vsQmaiwskMapm3yX8cY2Nmr6cz8m6aOXTv0a0ZIer9Flu+7DU++Lxg8CyIICVwNVAbq/Gh7p66P6Nix1A==
   dependencies:
     tslint-config-prettier "~1.18.0"
     tslint-plugin-prettier "~2.0.1"
