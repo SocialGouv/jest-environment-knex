@@ -22,7 +22,7 @@
     "@jest/types": "^24.8.0",
     "@socialgouv/tslint-config-recommended": "^0.9.3",
     "@types/debug": "^4.1.4",
-    "@types/jest": "^24.0.16",
+    "@types/jest": "^24.0.17",
     "@types/node": "^12.6.9",
     "jest": "^24.8.0",
     "pg": "^7.12.0",
