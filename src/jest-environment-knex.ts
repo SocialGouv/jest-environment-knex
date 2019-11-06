@@ -3,7 +3,7 @@
 import { Config, Global } from "@jest/types";
 import Debug from "debug";
 import NodeEnvironment from "jest-environment-node";
-import Knex from "knex";
+import Knex, { PgConnectionConfig, Sqlite3ConnectionConfig } from "knex";
 import parseConnection from "knex/lib/util/parse-connection";
 import { tmpdir } from "os";
 import { join } from "path";
@@ -134,7 +134,8 @@ class KnexEnvironment extends NodeEnvironment {
     const { connection } =
       typeof this.options.connection === "string"
         ? parseConnection(this.options.connection)
-        : { connection: this.options.connection };
+        : { connection: this.options.connection as Sqlite3ConnectionConfig };
+
     this.global.knex = Knex({
       ...this.options,
       connection: {
@@ -153,7 +154,8 @@ class KnexEnvironment extends NodeEnvironment {
     const { connection } =
       typeof this.options.connection === "string"
         ? parseConnection(this.options.connection)
-        : { connection: this.options.connection };
+        : { connection: this.options.connection as PgConnectionConfig };
+
     this.global.knex = Knex({
       ...this.options,
       connection: {
