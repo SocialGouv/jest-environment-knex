@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.1.3](https://github.com/SocialGouv/jest-environment-knex/compare/v1.1.2...v1.1.3) (2019-11-06)
+
+
+### Bug Fixes
+
+* **deps:** update dependency knex to ^0.20.0 ([#54](https://github.com/SocialGouv/jest-environment-knex/issues/54)) ([d5281d7](https://github.com/SocialGouv/jest-environment-knex/commit/d5281d75d7d1000898bf0731e5e8aaa91e5764cb))
+* **deps:** update dependency knex to ^0.20.1 ([#57](https://github.com/SocialGouv/jest-environment-knex/issues/57)) ([9fb06f4](https://github.com/SocialGouv/jest-environment-knex/commit/9fb06f48a2f4fd43deda51871a82e87a3efa5d0d))
+
 ### [1.1.2](https://github.com/SocialGouv/jest-environment-knex/compare/v1.1.1...v1.1.2) (2019-10-21)
 
 
