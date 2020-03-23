@@ -140,8 +140,8 @@ class KnexEnvironment extends NodeEnvironment {
       ...this.options,
       connection: {
         ...connection,
-        filename
-      }
+        filename,
+      },
     });
   }
 
@@ -160,8 +160,8 @@ class KnexEnvironment extends NodeEnvironment {
       ...this.options,
       connection: {
         ...connection,
-        database: this.global.databaseName
-      }
+        database: this.global.databaseName,
+      },
     });
   }
 

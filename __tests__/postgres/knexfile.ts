@@ -12,6 +12,6 @@ module.exports = {
 
   migrations: {
     directory: require("path").join(__dirname, "../__fixtures__/migrations"),
-    extension: "ts"
-  }
+    extension: "ts",
+  },
 };
