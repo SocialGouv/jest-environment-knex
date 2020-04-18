@@ -1,12 +1,11 @@
 ---
 
 dist: xenial
-language: minimal
-git:
-  depth: 5
-
+language: node_js
 node_js:
   - '8'
+git:
+  depth: 5
 
 #
 
@@ -20,7 +19,6 @@ node_js:
 #
 
 .node_stage: &node_stage
-  language: node_js
   cache: yarn
   before_install:
     - curl -o- -L https://yarnpkg.com/install.sh | bash
