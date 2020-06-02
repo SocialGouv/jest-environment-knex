@@ -3,7 +3,7 @@
 dist: xenial
 language: node_js
 node_js:
-  - "v12.17.0"
+  - "v12.18.0"
 git:
   depth: 5
 
