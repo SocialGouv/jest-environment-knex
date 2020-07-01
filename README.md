@@ -33,6 +33,12 @@ test("should list all tables", async () => {
   const results = await knex.raw(query, [knex.client.database()]);
   expect(results.rows.map(row => row.table_name).sort()).toMatchSnapshot();
 });
+
+afterAll(async () => {
+  // Closing the DB connection allows Jest to exit successfully.
+  await knex.migrate.rollback();
+  await knex.destroy();
+})
 ```
 
 
