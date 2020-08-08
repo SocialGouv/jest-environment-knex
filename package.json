@@ -15,7 +15,7 @@
   },
   "dependencies": {
     "jest-environment-node": "^25.1.0",
-    "knex": "^0.21.2",
+    "knex": "^0.21.3",
     "rand-token": "^1.0.1"
   },
   "devDependencies": {
