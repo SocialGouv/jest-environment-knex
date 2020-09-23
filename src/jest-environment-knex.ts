@@ -124,7 +124,7 @@ class KnexEnvironment extends NodeEnvironment {
     debug("/teardown");
   }
 
-  public runScript(script: Script) {
+  public runScript<T = unknown>(script: Script): T | null {
     return super.runScript(script);
   }
 
