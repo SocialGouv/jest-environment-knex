@@ -1,6 +1,7 @@
 # jest-environment-knex
 
-[![Build Status][travis-image]][travis-url]
+[![Github Master CI Status](https://github.com/SocialGouv/jest-environment-knex/workflows/ci/badge.svg?branch=master)](https://github.com/SocialGouv/jest-environment-knex/actions/)
+[![codecov](https://codecov.io/gh/SocialGouv/jest-environment-knex/branch/master/graph/badge.svg)](https://codecov.io/gh/SocialGouv/jest-environment-knex)
 [![NPM version][npm-image]][npm-url]
 
 > [knex](knexjs.org) environment in [Jest](https://github.com/facebook/jest)
@@ -31,10 +32,9 @@ test("should list all tables", async () => {
     WHERE table_schema = current_schema() AND table_catalog = ?
   `;
   const results = await knex.raw(query, [knex.client.database()]);
-  expect(results.rows.map(row => row.table_name).sort()).toMatchSnapshot();
+  expect(results.rows.map((row) => row.table_name).sort()).toMatchSnapshot();
 });
 ```
-
 
 ## Release policy
 
