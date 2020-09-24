@@ -4,7 +4,7 @@
     "declarationMap": true,
     "esModuleInterop": true,
     "target": "esnext",
-    "lib": [ "es2017" ],
+    "lib": ["es2017"],
     "module": "commonjs",
     "moduleResolution": "node",
     "noFallthroughCasesInSwitch": true,
@@ -13,6 +13,8 @@
     "noUnusedParameters": true,
     "outDir": "dist",
     "resolveJsonModule": true,
-    "strict": true
-  }
+    "strict": true,
+    "types": ["jest", "node"]
+  },
+  "exclude": ["node_modules", "lib"]
 }

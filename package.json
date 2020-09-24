@@ -1,13 +1,13 @@
 {
   "name": "jest-environment-knex",
   "version": "2.0.0",
-  "main": "./dist/src/jest-environment-knex.js",
-  "types": "./dist/src/jest-environment-knex.d.ts",
+  "main": "./lib/jest-environment-knex.js",
+  "types": "./lib/jest-environment-knex.d.ts",
   "files": [
-    "dist"
+    "lib"
   ],
   "scripts": {
-    "build": "tsc",
+    "build": "tsc -p tsconfig.build.json",
     "lint": "tslint -p tsconfig.json -t stylish",
     "test:sqlite3": "jest --config ./__tests__/sqlite3/jest.config.js",
     "test:postgres": "jest --config ./__tests__/postgres/jest.config.js",
