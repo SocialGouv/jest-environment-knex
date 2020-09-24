@@ -66,6 +66,13 @@ jobs:
       - name: Build
         run: yarn build
 
+      - name: Archive lib
+        if: matrix.config.kind == 'release'
+        uses: actions/upload-artifact@v2
+        with:
+          name: lib
+          path: lib/
+
       - name: Lint
         run: yarn lint
 
