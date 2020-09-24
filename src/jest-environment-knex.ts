@@ -16,7 +16,7 @@ const debug = Debug("jest-environment-knex");
 
 //
 
-class KnexEnvironment extends NodeEnvironment {
+export default class KnexEnvironment extends NodeEnvironment {
   public global: Global.Global & { databaseName: string; knex: Knex };
   private destroyPromises: any = [];
   private options: Knex.Config;
@@ -140,6 +140,7 @@ class KnexEnvironment extends NodeEnvironment {
       ...this.options,
       connection: {
         ...connection,
+        database: this.global.databaseName,
         filename,
       },
     });
@@ -178,5 +179,3 @@ class KnexEnvironment extends NodeEnvironment {
     );
   }
 }
-
-module.exports = KnexEnvironment;
