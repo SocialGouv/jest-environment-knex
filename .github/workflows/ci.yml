@@ -84,6 +84,8 @@ jobs:
         uses: codecov/codecov-action@v1
 
       - name: Functional tests (postgres)
+        env:
+          PGHOST: localhost
         run: yarn test:postgres
 
       - name: Functional tests (sqlite3)
