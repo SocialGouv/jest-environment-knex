@@ -85,7 +85,7 @@ jobs:
 
       - name: Functional tests (postgres)
         env:
-          PGHOST: localhost
+          POSTGRES_URL: postgres://postgres@localhost/postgres
         run: yarn test:postgres
 
       - name: Functional tests (sqlite3)
