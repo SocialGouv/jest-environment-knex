@@ -83,13 +83,13 @@ jobs:
         continue-on-error: true
         uses: codecov/codecov-action@v1
 
-      - name: Functional tests (postgres)
-        env:
-          POSTGRES_URL: postgres://postgres@localhost/postgres
-        run: yarn test:postgres
-
       - name: Functional tests (sqlite3)
         run: yarn test:sqlite3
+
+      - name: Functional tests (postgres)
+        env:
+          POSTGRES_URL: postgres://postgres@postgres/postgres
+        run: yarn test:postgres
 
   release:
     needs:
