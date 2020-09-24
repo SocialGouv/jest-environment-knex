@@ -1,3 +1,4 @@
-dist
+coverage
+lib
 dev.sqlite3
 node_modules
