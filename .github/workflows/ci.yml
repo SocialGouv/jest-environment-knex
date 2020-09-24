@@ -95,7 +95,9 @@ jobs:
   release:
     needs:
       - build
-    if: github.event_name == 'push'
+    if: |
+      github.event_name == 'push' &&
+      github.repository == 'SocialGouv/jest-environment-knex'
     runs-on: ubuntu-latest
     steps:
       - name: Set up Node
@@ -112,9 +114,6 @@ jobs:
           path: lib
 
       - name: Semantic Release
-        if: |
-          github.event_name == 'push' &&
-          github.repository == 'SocialGouv/jest-environment-knex'
         uses: cycjimmy/semantic-release-action@v2
         with:
           extra_plugins: |
