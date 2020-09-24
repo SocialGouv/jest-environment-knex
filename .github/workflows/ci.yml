@@ -69,7 +69,6 @@ jobs:
         run: yarn build
 
       - name: Archive lib
-        if: matrix.config.kind == 'release'
         uses: actions/upload-artifact@v2
         with:
           name: lib
