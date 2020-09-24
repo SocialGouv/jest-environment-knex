@@ -38,24 +38,7 @@ test("should list all tables", async () => {
 
 ## Release policy
 
-### Auto
-
-Trigger a custom build on [Travis][travis-url] (in the "More options" right menu) on the `master` branch with a custom config:
-
-```yml
-env:
-  global:
-    - RELEASE=true
-```
-
-You can change the lerna arguments though the `LERNA_ARGS` variable.
-
-```yml
-env:
-  global:
-    - STANDARD_VERSION_ARGS="--release-as major"
-    - RELEASE=true
-```
+Releases are automaticly made through our [GitHub Actions](https://github.com/SocialGouv/jest-environment-knex/actions) strictly following the [Semantic Versioning](http://semver.org/) specification thanks to [semantic-release](https://github.com/semantic-release/semantic-release).
 
 [npm-url]: https://npmjs.org/package/jest-environment-knex
 [npm-image]: http://img.shields.io/npm/v/jest-environment-knex.svg
