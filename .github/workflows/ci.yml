@@ -18,6 +18,8 @@ jobs:
     services:
       postgres:
         image: postgres:10
+        env:
+          POSTGRES_PASSWORD: postgres
         options: >-
           --health-cmd pg_isready
           --health-interval 10s
@@ -89,6 +91,7 @@ jobs:
       - name: Functional tests (postgres)
         env:
           DEBUG: jest-environment-knex
+          POSTGRES_URL: postgres://postgres:postgres@localhost/postgres
         run: yarn test:postgres
 
   release:
