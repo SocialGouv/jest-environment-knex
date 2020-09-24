@@ -89,7 +89,7 @@ jobs:
       - name: Functional tests (postgres)
         env:
           DEBUG: jest-environment-knex
-          POSTGRES_URL: postgres://postgres@postgres/postgres
+          POSTGRES_URL: postgres://postgres@localhost/postgres
         run: yarn test:postgres
 
   release:
