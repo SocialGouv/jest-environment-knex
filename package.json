@@ -27,7 +27,7 @@
     "@types/jest": "^26.0.14",
     "@types/jest-when": "^2.7.1",
     "@types/node": "^12.12.31",
-    "jest": "^26.5.2",
+    "jest": "^26.5.3",
     "jest-when": "^2.7.2",
     "pg": "^8.4.1",
     "prettier": "^2.1.2",
