@@ -1,6 +1,6 @@
 {
   "name": "jest-environment-knex",
-  "version": "3.0.5",
+  "version": "3.0.6",
   "main": "./lib/jest-environment-knex.js",
   "types": "./lib/jest-environment-knex.d.ts",
   "files": [
