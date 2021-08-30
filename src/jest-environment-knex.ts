@@ -8,7 +8,7 @@ import parseConnection from "knex/lib/util/parse-connection";
 import { tmpdir } from "os";
 import { join } from "path";
 import { uid } from "rand-token";
-import { runInContext, Script } from "vm";
+import { runInContext } from "vm";
 
 //
 
@@ -124,10 +124,6 @@ export default class KnexEnvironment extends NodeEnvironment {
     debug("/teardown");
   }
 
-  public runScript<T = unknown>(script: Script): T | null {
-    return super.runScript(script);
-  }
-
   private async createRandomDataFile() {
     const filename = join(tmpdir(), this.global.databaseName + ".sqlite3");
     debug({ filename });
@@ -171,7 +167,7 @@ export default class KnexEnvironment extends NodeEnvironment {
       return;
     }
     this.destroyPromises.push(
-      ((knex.destroy() as any) as Promise<void>).then(
+      (knex.destroy() as any as Promise<void>).then(
         debug.bind(null, "knex.destroyed"),
         // tslint:disable-next-line: no-console
         console.error

@@ -29,7 +29,7 @@ beforeEach(() => {
     destroy: jest.fn().mockResolvedValue(null),
     client: { config: {} },
   };
-  ((Knex as any) as jest.Mock<any, any>).mockClear();
+  (Knex as any as jest.Mock<any, any>).mockClear();
 });
 
 test("should uses a copy of the process object", () => {
@@ -93,14 +93,8 @@ test("should exposes knex with connection string", async () => {
   expect(knex.destroy).toHaveBeenCalledTimes(1);
 
   expect(Knex).toHaveBeenCalledWith({
-    connection: {
-      database: env.global.databaseName,
-      host: "myproject.postgres.database.gouv.com",
-      password: "password",
-      port: null,
-      sslmode: "require",
-      user: "user",
-    },
+    connection:
+      "postgresql://user:password@myproject.postgres.database.gouv.com/autodevops_xxx?sslmode=require",
   });
   expect(env.global.knex).toBeDefined();
 });
@@ -164,15 +158,8 @@ test("should exposes knex with connection string (sqlite3)", async () => {
   expect(knex.destroy).toHaveBeenCalledTimes(1);
 
   expect(Knex).toHaveBeenCalledWith({
-    connection: {
-      database: env.global.databaseName,
-      filename: `/tmp/${env.global.databaseName}.sqlite3`,
-      host: "myproject.postgres.database.gouv.com",
-      password: "password",
-      port: null,
-      sslmode: "require",
-      user: "user",
-    },
+    connection:
+      "postgresql://user:password@myproject.postgres.database.gouv.com/autodevops_xxx?sslmode=require",
   });
   expect(env.global.knex).toBeDefined();
 });
