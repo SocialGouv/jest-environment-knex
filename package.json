@@ -16,18 +16,18 @@
     "watch": "yarn build --watch"
   },
   "dependencies": {
-    "jest-environment-node": "^27.2.3",
+    "jest-environment-node": "^27.2.4",
     "knex": "^0.21.21",
     "rand-token": "^1.0.1"
   },
   "devDependencies": {
-    "@jest/types": "^27.2.3",
+    "@jest/types": "^27.2.4",
     "@socialgouv/tslint-config-recommended": "^0.35.0",
     "@types/debug": "^4.1.7",
     "@types/jest": "^27.0.2",
     "@types/jest-when": "^2.7.3",
     "@types/node": "^14.17.20",
-    "jest": "^27.2.3",
+    "jest": "^27.2.4",
     "jest-when": "^3.4.0",
     "pg": "^8.7.1",
     "prettier": "^2.4.1",
