@@ -21,7 +21,7 @@
     "rand-token": "^1.0.1"
   },
   "devDependencies": {
-    "@jest/types": "^27.4.2",
+    "@jest/types": "^29.0.0",
     "@socialgouv/tslint-config-recommended": "^0.35.0",
     "@types/debug": "^4.1.7",
     "@types/jest": "^27.0.3",
