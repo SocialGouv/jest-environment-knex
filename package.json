@@ -16,7 +16,7 @@
     "watch": "yarn build --watch"
   },
   "dependencies": {
-    "jest-environment-node": "^27.4.4",
+    "jest-environment-node": "^29.0.0",
     "knex": "^0.21.21",
     "rand-token": "^1.0.1"
   },
