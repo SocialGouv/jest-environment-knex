@@ -21,7 +21,7 @@ export default class KnexEnvironment extends NodeEnvironment {
   private destroyPromises: any = [];
   private options: Knex.Config;
 
-  constructor(config: Config.ProjectConfig) {
+  constructor(config: Config) {
     super(config);
     debug("super(config)");
 
@@ -41,12 +41,12 @@ export default class KnexEnvironment extends NodeEnvironment {
       Object.assign(this.context, config.testEnvironmentOptions)
     ));
     const prefix =
-      config.testEnvironmentOptions.prefix || "jest_environment_knex";
+      config.projectConfig.testEnvironmentOptions.prefix || "jest_environment_knex";
     global.databaseName = `${prefix}_${uid(16).toLowerCase()}`;
 
     //
 
-    this.options = config.testEnvironmentOptions;
+    this.options = config.projectConfig.testEnvironmentOptions;
   }
 
   public async setup() {
